@@ -525,9 +525,6 @@ footer a {
   .portfolio-container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .my-img img, .about-img img{
-    width: 40vw;
-  }
 }
 
 @media screen and (max-width: 550px){
