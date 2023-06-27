@@ -209,7 +209,8 @@ section {
   transition: transform 0.4s;
   border-radius: 15px;
   border: 5px solid black;
-  height: 42rem;
+  height: auto;
+  /* height: 42rem; */
 }
 .service-icon {
   font-size: 3rem;
@@ -508,3 +509,75 @@ footer a {
 }
 
 /* Making responsive */
+@media screen and (min-width: 818px) {
+  .service-box{
+    height: 100vh;
+  }
+  
+}
+@media screen and (min-width: 768px) {
+  .home {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .portfolio-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .my-img img, .about-img img{
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 550px){
+  .skill-main{
+    width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media screen and (max-width: 630px) {
+  .my-img img, .about-img img{
+    width: 15vw;
+  }
+  
+}
+
+@media screen and (max-width: 767px) {
+  .home {
+    grid-template-columns: 1fr;
+  }
+  .about {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 760px) {
+  
+  .home-content h3 {
+    font-size: 1.3rem;
+  }
+  .my-img img {
+    width: 70vw;
+  }
+  .about-img img {
+    width: 60vw;
+  }
+  .portfolio-container {
+    grid-template-columns: 1fr;
+  }
+  .service-box,
+  .portfolio-box {
+    flex: 1 1 100%;
+  }
+  .contact form label {
+    font-size: 1rem;
+  }
+  .contact form .input-box input,
+  .contact form textarea {
+    font-size: 1.2rem;
+  }
+}
