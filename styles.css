@@ -39,9 +39,8 @@ header {
   padding: 20px;
   z-index: 1;
 }
-.header.sticky{
-  border-bottom: .1rem solid transparent;
-
+.header.sticky {
+  border-bottom: 0.1rem solid transparent;
 }
 .logo {
   font-size: 26px;
@@ -78,6 +77,61 @@ span {
     0 0 80px rgba(18, 247, 255, 0.6), 0 0 100px rgba(18, 247, 255, 0.6),
     0 0 150px rgba(18, 247, 255, 0.6);
 }
+
+/* Base styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .nav-list {
+  display: flex;
+  list-style: none;
+}
+
+nav .nav-list li {
+  margin: 0 15px;
+}
+
+nav .nav-list li a {
+  text-decoration: none;
+  color: whitesmoke;
+  font-size: 1.1rem;
+}
+
+#menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Media Queries for Mobile */
+@media screen and (max-width: 768px) {
+  nav .nav-list {
+    display: none; /* Hide the navigation links by default */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background-color: var(--sec-bg-color);
+    padding: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  nav .nav-list li {
+    margin: 10px 0;
+  }
+
+  #menu-icon {
+    display: block; /* Show the hamburger icon on small screens */
+  }
+
+  nav .nav-list.active {
+    display: flex; /* Show the menu when active */
+  }
+}
+
 /* Home page */
 section {
   padding: 100px 10%;
@@ -107,13 +161,13 @@ section {
   animation: floatImage 4s ease-in-out infinite;
 }
 @keyframes floatImage {
-  0%{
+  0% {
     transform: translateY(0);
   }
-  50%{
+  50% {
     transform: translateY(-2.2rem);
   }
-  100%{
+  100% {
     transform: translateY(0);
   }
 }
@@ -136,8 +190,7 @@ section {
   color: var(--sec-bg-color);
   box-shadow: var(--hover-color) 1px 0 10px;
 }
-.cv-btn,
-.rm-btn {
+.cv-btn {
   display: inline-block;
   padding: 0.7rem 1.6rem;
   background: var(--hover-color);
@@ -148,11 +201,24 @@ section {
   font-weight: 700;
   margin-top: 50px;
 }
-.cv-btn:hover,
-.rm-btn:hover {
+.rm-btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: var(--sec-bg-color);
+  font-weight: 700;
+  margin-top: 20px;
+  border: 2px solid beige;
+}
+.cv-btn:hover {
   box-shadow: rgb(69, 147, 219) 1px 0 10px;
   transform: translateY(-5px);
-  transition: .4s ease-out;
+  transition: 0.4s ease-out;
+}
+.rm-btn:hover {
+  transform: translateY(5px);
+  transition: 0.4s ease-out;
 }
 /* About page */
 .about {
@@ -183,44 +249,97 @@ section {
   text-align: center;
   margin: 15px 0;
 }
-/* Service section */
+
+#experiences {
+  padding: 60px 0;
+  background-color: var(--bg-color);
+}
+
 .heading {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
   margin-bottom: 3rem;
 }
-.services h2 {
-  margin-bottom: 1rem;
-}
-.services h3 {
+
+.heading span {
   color: var(--hover-color);
 }
 
-.services-container {
+.experiences-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  grid-gap: 2rem;
+  gap: 2rem;
+  padding: 20px;
 }
-.services-container .service-box {
+
+.experiences-box {
   flex: 1 1 18rem;
-  padding: 2rem 1rem 2rem;
+  padding: 2rem 1rem;
   text-align: center;
-  background: var(--sec-bg-color);
-  transition: transform 0.4s;
+  background-color: var(--bg-color);
   border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   border: 5px solid black;
   height: auto;
-  /* height: 42rem; */
+  max-width: 320px;
 }
-.service-icon {
+
+.experiences-box i {
   font-size: 3rem;
-  color: var(--bg-color);
+  color: var(--hover-color);
+  margin-bottom: 1.5rem;
 }
-.service-box:hover {
+
+.experiences-box h2 {
+  font-size: 24px;
+  color: whitesmoke;
+  margin-bottom: 1rem;
+}
+
+.experiences-box h3 {
+  font-size: 18px;
+  color: var(--hover-color);
+  margin-bottom: 1.5rem;
+}
+
+.experiences-box p {
+  font-size: 14px;
+  color: wheat;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.rm-btn {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.experiences-box:hover {
   transform: translateY(-0.7rem);
   cursor: pointer;
-  border: 2px solid var(--hover-color);
 }
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .experiences-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .experiences-box {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
 /* Skills section */
 .skills {
   background-color: var(--sec-bg-color);
@@ -431,10 +550,10 @@ section {
   display: flex;
   justify-content: center;
 }
-.project:hover>i {
+.project:hover > i {
   transform: translateX(3px);
 }
-.project>i {
+.project > i {
   margin-left: 10px;
   transform: translateX(0);
   transition: transform 0.4s ease;
@@ -460,7 +579,7 @@ section {
   font-size: 1.3rem;
   text-shadow: var(--bg-color) 1px 0 10px;
 }
-.input-box{
+.input-box {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -468,7 +587,7 @@ section {
 .contact form .input-box input,
 .contact form textarea {
   width: 100%;
-  padding: .4rem;
+  padding: 0.4rem;
   font-size: 1.6rem;
   color: var(--text-color);
   background: var(--bg-color);
@@ -479,9 +598,11 @@ section {
 .contact form textarea {
   resize: none;
 }
-.submitForm{
+.submitForm {
   border: 2px solid black;
   cursor: pointer;
+  background-color: var(--hover-color);
+  color: black;
 }
 /* footer */
 #self {
@@ -510,10 +631,9 @@ footer a {
 
 /* Making responsive */
 @media screen and (min-width: 818px) {
-  .service-box{
+  .service-box {
     height: 100vh;
   }
-  
 }
 @media screen and (min-width: 768px) {
   .home {
@@ -527,17 +647,17 @@ footer a {
   }
 }
 
-@media screen and (max-width: 550px){
-  .skill-main{
+@media screen and (max-width: 550px) {
+  .skill-main {
     width: 100%;
     grid-template-columns: repeat(1, 1fr);
   }
 }
 @media screen and (max-width: 630px) {
-  .my-img img, .about-img img{
+  .my-img img,
+  .about-img img {
     width: 15vw;
   }
-  
 }
 
 @media screen and (max-width: 767px) {
@@ -553,7 +673,6 @@ footer a {
 }
 
 @media screen and (max-width: 760px) {
-  
   .home-content h3 {
     font-size: 1.3rem;
   }
